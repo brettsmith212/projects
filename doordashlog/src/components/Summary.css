@@ -1,0 +1,26 @@
+.summary-container {
+  padding: 4.8rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.summary-container h2,
+h3 {
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.summary-green {
+  color: #37b24d;
+}
+
+@media only screen and (max-width: 600px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  .summary-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    padding: 0rem;
+    margin-top: 1.2rem;
+  }
+}
