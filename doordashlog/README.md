@@ -1,6 +1,6 @@
 # DoorDash Log App
 
-## This application allows you to add dashes and summarize the data to easily know how much you made
+## This application allows you to add dashes and summarize the data to easily know how much you made during each dash
 ### * The 'Add Dash' button allows you to add a single dash (A dash consists of multiple orders)
 ### * The table below contains all dashes you have made
 ### * The summary at the top shows your totals and calculates your net pay by subtracting out wear and tear + gas cost
