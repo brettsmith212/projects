@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <div className="navbar">
       <h1>DoorDash Log</h1>
-      <h3>Welcome, Mr. Poopy!</h3>
+      <h3>Welcome, Mr. Brett!</h3>
     </div>
   );
 }
