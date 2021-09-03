@@ -1,4 +1,4 @@
-# DoorDash Log App
+# DoorDash Log App - Currently Updating (May not be functioning properly)
 
 ## This application allows you to add dashes and summarize the data to easily know how much you made during each dash
 ### Live app: https://doordash-log.herokuapp.com/
