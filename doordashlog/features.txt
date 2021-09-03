@@ -1,0 +1,6 @@
+Features Needed:
+
+9/2/21
+ - In Firestore Database -> Rules -> need to create authentication to write to database.  Right now it is set to if true, needs to be changed to if false.
+
+ - Add in a pull from Firebase to Table.js

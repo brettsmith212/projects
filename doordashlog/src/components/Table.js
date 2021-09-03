@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "./Table.css";
 
+import firebase from "../Firebase";
+import "firebase/compat/firestore";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+
+const firestore = firebase.firestore();
+
 const Table = (props) => {
   const [dashes, setDashes] = useState([]);
   const [httpError, setHttpError] = useState(null);
-  // const [removeDash, setRemoveDash] = useState("");
 
-  // console.log(removeDash.id);
+  const dashesRef = firestore.collection("dashes");
+  const query = dashesRef.orderBy("createdAt");
+
+  const [firebaseDashes] = useCollectionData(query, { idField: "id" });
+  // const { gasCost, milesPerOrder } = firebaseDashes;
+
+  console.log(firebaseDashes);
+  // console.log(gasCost);
+  // console.log(milesPerOrder);
 
   const dashesList = dashes.map((dash) => (
     <tr key={dash.id}>

@@ -1,6 +1,13 @@
 import React, { useState, useRef } from "react";
 import "./Form.css";
 
+import firebase from "../Firebase";
+import "firebase/compat/firestore";
+import "firebase/compat/auth";
+
+const firestore = firebase.firestore();
+const auth = firebase.auth();
+
 const isEmpty = (value) => value.trim().length === "";
 
 function Form(props) {
@@ -22,7 +29,10 @@ function Form(props) {
   const gasPriceInputRef = useRef();
   const payInputRef = useRef();
 
-  const handleSubmit = (e) => {
+  // Firestore Collection
+  const dashesRef = firestore.collection("dashes");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -93,16 +103,38 @@ function Form(props) {
       return;
     }
 
-    fetch("https://react-http-3051a-default-rtdb.firebaseio.com/orders.json", {
-      method: "POST",
-      body: JSON.stringify(dash),
-    })
-      .then(() => {
-        // console.log("Dash Added");
-      })
-      .catch((error) => {
-        console.error("Something went wrong!");
-      });
+    // fetch("https://react-http-3051a-default-rtdb.firebaseio.com/orders.json", {
+    //   method: "POST",
+    //   body: JSON.stringify(dash),
+    // })
+    //   .then(() => {
+    //     // console.log("Dash Added");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Something went wrong!");
+    //   });
+
+    // Send data to firestore
+    const { uid, photoURL } = auth.currentUser;
+
+    await dashesRef.add({
+      totalTime: enteredTime,
+      currentDate: enteredDate,
+      totalOrders: enteredOrders,
+      totalMiles: enteredMiles,
+      totalMpg: enteredMpg,
+      totalGasPrice: enteredGasPrice,
+      totalPay: enteredPay,
+      costPerOrder: costPerOrder,
+      costToOperate: costToOperate,
+      gasCost: gasCost,
+      milesPerOrder: milesPerOrder,
+      netPayPerHour: netPayPerHour,
+      netPay: netPay,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      photoURL,
+    });
 
     setCurrentDate("");
     setTotalTime("");
