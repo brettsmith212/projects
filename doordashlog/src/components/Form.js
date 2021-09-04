@@ -57,21 +57,21 @@ function Form(props) {
     netPay = netPay.toFixed(2);
     netPayPerHour = netPayPerHour.toFixed(2);
 
-    const dash = {
-      currentDate,
-      totalTime,
-      totalOrders,
-      totalMiles,
-      totalMpg,
-      totalGasPrice,
-      gasCost,
-      milesPerOrder,
-      costPerOrder,
-      totalPay,
-      costToOperate,
-      netPay,
-      netPayPerHour,
-    };
+    // const dash = {
+    //   currentDate,
+    //   totalTime,
+    //   totalOrders,
+    //   totalMiles,
+    //   totalMpg,
+    //   totalGasPrice,
+    //   gasCost,
+    //   milesPerOrder,
+    //   costPerOrder,
+    //   totalPay,
+    //   costToOperate,
+    //   netPay,
+    //   netPayPerHour,
+    // };
     // console.log(dash);
 
     const enteredDate = dateInputRef.current.value;
@@ -115,7 +115,8 @@ function Form(props) {
     //   });
 
     // Send data to firestore
-    const { uid, photoURL } = auth.currentUser;
+    const { uid, photoURL, email } = auth.currentUser;
+    console.log(auth.currentUser);
 
     await dashesRef.add({
       totalTime: enteredTime,
@@ -134,6 +135,7 @@ function Form(props) {
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
       photoURL,
+      email,
     });
 
     setCurrentDate("");
@@ -146,7 +148,7 @@ function Form(props) {
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 2000);
   };
 
   const formActive = showForm ? "form active" : "form";

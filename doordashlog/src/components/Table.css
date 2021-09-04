@@ -30,6 +30,13 @@
   color: #37b24d;
 }
 
+.order-container {
+  display: flex;
+  align-items: center;
+  height: 3.4rem;
+  margin-bottom: 1.2rem;
+}
+
 button.remove {
   color: #f03e3e;
   background: #fff;
@@ -45,6 +52,33 @@ button.remove:hover {
   background: #f03e3e;
   color: #fff;
   transition: 300ms;
+}
+
+button.order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 9.6rem;
+  height: 2.4rem;
+  font-size: 1.2rem;
+  background: #f03e3e;
+  color: #fff;
+  text-align: center;
+  border: 0;
+  padding: 1.4rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+
+button.order:hover {
+  color: #fff;
+  background-color: #ff6b6b;
+  transition: 300ms;
+}
+
+button.order:active {
+  font-size: 105%;
+  padding: 1.6rem;
 }
 
 /* 
@@ -117,6 +151,10 @@ and also iPads specifically.
     /* border: 1px solid #f03e3e; */
     border: none;
     transition: 300ms;
+  }
+
+  button.order {
+    width: 100%;
   }
 
   /*
