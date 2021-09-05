@@ -15,6 +15,7 @@ function Summary() {
   console.log("Dashes", ctx.dashes);
 
   if (ctx.dashes?.length > 0) {
+    console.log(ctx.dashes.totalPay);
     payTotal = ctx.dashes.reduce((acc, cur) => {
       return acc + parseFloat(cur.totalPay);
     }, 0);

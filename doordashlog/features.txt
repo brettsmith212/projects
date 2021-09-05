@@ -7,3 +7,6 @@ To Do:
  X Add in a pull from Firebase to Table.js
 
  - Add Table dashes to the summary
+    Use the github of previous version to understand dashesLoaded
+    Need to find a way to loop through the object (showing up as 1) 
+        Maybe there is a way as an array?

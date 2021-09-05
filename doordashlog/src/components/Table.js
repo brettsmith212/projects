@@ -18,6 +18,7 @@ const Table = () => {
 
   let firebaseFiltered = [];
   const ctx = useContext(AuthContext);
+  const loadedDashes = [];
 
   // const request = firestore.status.requesting;
   // console.log(request);
@@ -44,6 +45,24 @@ const Table = () => {
       firebaseFiltered = firebaseDashes.flatMap((dash) =>
         uid === dash.uid ? dash : []
       );
+
+      for (let i = 0; i < firebaseFiltered.length; i++) {
+        loadedDashes.push({
+          currentDate: firebaseFiltered[i].currentDate,
+          totalTime: firebaseFiltered[i].totalTime,
+          totalOrders: firebaseFiltered[i].totalOrders,
+          totalMiles: firebaseFiltered[i].totalMiles,
+          totalMpg: firebaseFiltered[i].totalMpg,
+          totalGasPrice: firebaseFiltered[i].totalGasPrice,
+          gasCost: firebaseFiltered[i].gasCost,
+          milesPerOrder: firebaseFiltered[i].milesPerOrder,
+          costPerOrder: firebaseFiltered[i].costPerOrder,
+          totalPay: firebaseFiltered[i].totalPay,
+          costToOperate: firebaseFiltered[i].costToOperate,
+          netPay: firebaseFiltered[i].netPay,
+          netPayPerHour: firebaseFiltered[i].netPayPerHour,
+        });
+      }
 
       dashesList = firebaseFiltered.map((dash) => {
         return (
@@ -79,17 +98,14 @@ const Table = () => {
 
   useEffect(() => {
     ctx.setDashes((previousDash) => {
-      console.log(dashesList);
-      if (dashesList?.length > 1) {
+      if (loadedDashes.length > 0) {
         previousDash = [];
         // console.log("DashesList: " + dashesList);
         // console.log("Previous Dash: " + previousDash);
-        previousDash.push(dashesList);
-        console.log("previousdash: ");
-        console.log(previousDash);
+        return previousDash.push(loadedDashes);
       }
     });
-  }, [ctx, dashesList]);
+  }, [ctx, loadedDashes]);
 
   return (
     <React.Fragment>
