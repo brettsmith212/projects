@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
+import AuthContext from "../auth-context";
 import "./Table.css";
 
 import firebase from "../Firebase";
@@ -9,12 +10,17 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 const firestore = firebase.firestore();
 const auth = firebase.auth();
 
-const Table = (props) => {
-  const [dashes, setDashes] = useState([]);
+const Table = () => {
   const [isAscending, setisAscending] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  let dashesList = [];
+  let dashesList;
+
   let firebaseFiltered = [];
+  const ctx = useContext(AuthContext);
+
+  // const request = firestore.status.requesting;
+  // console.log(request);
 
   const deleteRow = (dashId) => {
     firestore.collection("dashes").doc(dashId).delete();
@@ -31,7 +37,7 @@ const Table = (props) => {
   const query = dashesRef.orderBy("currentDate", order);
   const [firebaseDashes] = useCollectionData(query, { idField: "id" });
 
-  if (auth.currentUser) {
+  if (ctx.isLoggedIn) {
     const { uid } = auth.currentUser;
 
     if (firebaseDashes) {
@@ -72,42 +78,57 @@ const Table = (props) => {
   }
 
   useEffect(() => {
-    props.onSaveForm(dashes);
-  }, [dashes, props]);
+    ctx.setDashes((previousDash) => {
+      console.log(dashesList);
+      if (dashesList?.length > 1) {
+        previousDash = [];
+        // console.log("DashesList: " + dashesList);
+        // console.log("Previous Dash: " + previousDash);
+        previousDash.push(dashesList);
+        console.log("previousdash: ");
+        console.log(previousDash);
+      }
+    });
+  }, [ctx, dashesList]);
 
   return (
-    <div className="table-container">
-      <div className="order-container">
-        <button
-          className="order"
-          onClick={() => {
-            setisAscending(!isAscending);
-          }}
-        >
-          {isAscending ? "Ascending" : "Descending"}
-        </button>
-      </div>
-      <table className="table">
-        <thead className="table-header">
-          <tr>
-            <th>Date</th>
-            <th>Total Time (mins)</th>
-            <th># of Orders</th>
-            <th>Total Miles</th>
-            <th>MPG</th>
-            <th>Gas Price (est)</th>
-            <th>Gas Cost</th>
-            <th>Miles per Order</th>
-            <th>Cost per Order</th>
-            <th>Total Pay</th>
-            <th>Cost to Operate</th>
-            <th>Net Pay</th>
-            <th>Net $ / Hr</th>
-          </tr>
-        </thead>
-        <tbody className="table-body">{dashesList}</tbody>
-      </table>
-    </div>
+    <React.Fragment>
+      {!isLoading && (
+        <div className="table-container">
+          <div className="order-container">
+            <button
+              className="order"
+              onClick={() => {
+                setisAscending(!isAscending);
+              }}
+            >
+              {isAscending ? "Oldest First" : "Newest First"}
+            </button>
+          </div>
+          <table className="table">
+            <thead className="table-header">
+              <tr>
+                <th>Date</th>
+                <th>Total Time (mins)</th>
+                <th># of Orders</th>
+                <th>Total Miles</th>
+                <th>MPG</th>
+                <th>Gas Price (est)</th>
+                <th>Gas Cost</th>
+                <th>Miles per Order</th>
+                <th>Cost per Order</th>
+                <th>Total Pay</th>
+                <th>Cost to Operate</th>
+                <th>Net Pay</th>
+                <th>Net $ / Hr</th>
+              </tr>
+            </thead>
+            <tbody className="table-body">{dashesList}</tbody>
+          </table>
+        </div>
+      )}
+      {isLoading && <h1>Loading</h1>}
+    </React.Fragment>
   );
 };
 

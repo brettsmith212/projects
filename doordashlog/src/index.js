@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { AuthContextProvider } from "./auth-context";
 
 // // Import the functions you need from the SDKs you need
 // import { firebase } from "firebase/app";
@@ -19,4 +20,9 @@ import App from "./App";
 //   appId: "1:603568763820:web:5464b4115e37cdcdf4c009",
 // });
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <AuthContextProvider>
+    <App />
+  </AuthContextProvider>,
+  document.getElementById("root")
+);

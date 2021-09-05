@@ -1,41 +1,47 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "../auth-context";
 import "./Summary.css";
 
-function Summary(props) {
-  // console.log(props.dashes);
+function Summary() {
+  const ctx = useContext(AuthContext);
 
-  const payTotal = props.dashes.reduce((acc, cur) => {
-    return acc + parseFloat(cur.totalPay);
-  }, 0);
+  let payTotal = 0;
+  let netPayTotal = 0;
+  let minsDrivenTotal = 0;
+  let netPayPerHourTotal = 0;
+  let ordersTotal = 0;
+  let dashesTotal = 0;
 
-  const netPayTotal = props.dashes.reduce((acc, cur) => {
-    return acc + parseFloat(cur.netPay);
-  }, 0);
+  console.log("Dashes", ctx.dashes);
 
-  const minsDrivenTotal = props.dashes.reduce((acc, cur) => {
-    return acc + parseFloat(cur.totalTime);
-  }, 0);
+  if (ctx.dashes?.length > 0) {
+    payTotal = ctx.dashes.reduce((acc, cur) => {
+      return acc + parseFloat(cur.totalPay);
+    }, 0);
 
-  const netPayPerHourTotal = props.dashes.reduce((acc, cur) => {
-    return acc + parseFloat(cur.netPayPerHour);
-  }, 0);
+    netPayTotal = ctx.dashes.reduce((acc, cur) => {
+      return acc + parseFloat(cur.netPay);
+    }, 0);
 
-  const ordersTotal = props.dashes.reduce((acc, cur) => {
-    return acc + parseFloat(cur.totalOrders);
-  }, 0);
+    minsDrivenTotal = ctx.dashes.reduce((acc, cur) => {
+      return acc + parseFloat(cur.totalTime);
+    }, 0);
 
-  const dashesTotal = props.dashes.reduce((acc, cur) => {
-    return acc + 1;
-  }, 0);
+    netPayPerHourTotal = ctx.dashes.reduce((acc, cur) => {
+      return acc + parseFloat(cur.netPayPerHour);
+    }, 0);
+
+    ordersTotal = ctx.dashes.reduce((acc, cur) => {
+      return acc + parseFloat(cur.totalOrders);
+    }, 0);
+
+    dashesTotal = ctx.dashes.reduce((acc, cur) => {
+      return acc + 1;
+    }, 0);
+  }
 
   const hoursDrivenTotal = minsDrivenTotal / 60;
   const netPayPerHourAverage = netPayPerHourTotal / dashesTotal;
-
-  // console.log(payTotal.toFixed(2));
-  // console.log(netPayTotal.toFixed(2));
-  // console.log(minsDrivenTotal.toFixed(2));
-  // console.log(netPayPerHourTotal.toFixed(2));
-  // console.log(dashesTotal.toFixed(2));
 
   return (
     <div className="summary-container">

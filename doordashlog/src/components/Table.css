@@ -58,7 +58,7 @@ button.order {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 9.6rem;
+  width: 11.2rem;
   height: 2.4rem;
   font-size: 1.2rem;
   background: #f03e3e;
@@ -77,7 +77,7 @@ button.order:hover {
 }
 
 button.order:active {
-  font-size: 105%;
+  font-size: 1.4rem;
   padding: 1.6rem;
 }
 
@@ -118,6 +118,10 @@ and also iPads specifically.
     border-bottom: 1px solid #eee;
     position: relative;
     padding-left: 50%;
+  }
+
+  td:last-child {
+    padding: 0;
   }
 
   td:before {

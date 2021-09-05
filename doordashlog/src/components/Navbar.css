@@ -16,6 +16,41 @@
   font-size: 2.4rem;
 }
 
+.login-container {
+  margin: 1.2rem;
+  padding: 1.2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+button.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12.5rem;
+  height: 2.4rem;
+  font-size: 1.6rem;
+  background: #f03e3e;
+  color: #fff;
+  text-align: center;
+  border: 0;
+  padding: 1.4rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+
+button.login:hover {
+  color: #fff;
+  background-color: #ff6b6b;
+  transition: 300ms;
+}
+
+button.login:active {
+  font-size: 1.4rem;
+  padding: 1.6rem;
+}
+
 @media only screen and (max-width: 600px),
   (min-device-width: 768px) and (max-device-width: 1024px) {
   .navbar {
@@ -31,5 +66,13 @@
 
   .navbar > h1 {
     padding-bottom: 1.2rem;
+  }
+
+  .login-container {
+    justify-content: center;
+    margin-left: 2.4rem;
+    margin-right: 2.4rem;
+    padding-left: 0;
+    padding-right: 0;
   }
 }

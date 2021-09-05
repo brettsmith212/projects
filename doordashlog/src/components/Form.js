@@ -10,7 +10,7 @@ const auth = firebase.auth();
 
 const isEmpty = (value) => value.trim().length === "";
 
-function Form(props) {
+function Form() {
   const [currentDate, setCurrentDate] = useState("");
   const [totalTime, setTotalTime] = useState("");
   const [totalOrders, setTotalOrders] = useState("");
@@ -116,7 +116,6 @@ function Form(props) {
 
     // Send data to firestore
     const { uid, photoURL, email } = auth.currentUser;
-    console.log(auth.currentUser);
 
     await dashesRef.add({
       totalTime: enteredTime,
@@ -249,11 +248,7 @@ function Form(props) {
             value={totalPay}
             onChange={(e) => setTotalPay(e.target.value)}
           />
-          {!isLoading && (
-            <button className="button-toggle" onClick={props.clicked}>
-              Add Dash
-            </button>
-          )}
+          {!isLoading && <button className="button-toggle">Add Dash</button>}
           {isLoading && (
             <div className="center">
               <div className="wave"></div>
