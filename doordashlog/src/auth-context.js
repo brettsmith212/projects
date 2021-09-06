@@ -41,6 +41,7 @@ export const AuthContextProvider = (props) => {
       })
       .catch((e) => {
         console.log(e);
+        alert(e);
       });
   };
 
