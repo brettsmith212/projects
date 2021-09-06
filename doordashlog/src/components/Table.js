@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import React, { useState, useContext } from "react";
 import AuthContext from "../auth-context";
 import "./Table.css";
 
@@ -12,16 +12,12 @@ const auth = firebase.auth();
 
 const Table = () => {
   const [isAscending, setisAscending] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const isLoading = false;
 
   let dashesList;
 
   let firebaseFiltered = [];
   const ctx = useContext(AuthContext);
-  const loadedDashes = [];
-
-  // const request = firestore.status.requesting;
-  // console.log(request);
 
   const deleteRow = (dashId) => {
     firestore.collection("dashes").doc(dashId).delete();
@@ -45,24 +41,6 @@ const Table = () => {
       firebaseFiltered = firebaseDashes.flatMap((dash) =>
         uid === dash.uid ? dash : []
       );
-
-      for (let i = 0; i < firebaseFiltered.length; i++) {
-        loadedDashes.push({
-          currentDate: firebaseFiltered[i].currentDate,
-          totalTime: firebaseFiltered[i].totalTime,
-          totalOrders: firebaseFiltered[i].totalOrders,
-          totalMiles: firebaseFiltered[i].totalMiles,
-          totalMpg: firebaseFiltered[i].totalMpg,
-          totalGasPrice: firebaseFiltered[i].totalGasPrice,
-          gasCost: firebaseFiltered[i].gasCost,
-          milesPerOrder: firebaseFiltered[i].milesPerOrder,
-          costPerOrder: firebaseFiltered[i].costPerOrder,
-          totalPay: firebaseFiltered[i].totalPay,
-          costToOperate: firebaseFiltered[i].costToOperate,
-          netPay: firebaseFiltered[i].netPay,
-          netPayPerHour: firebaseFiltered[i].netPayPerHour,
-        });
-      }
 
       dashesList = firebaseFiltered.map((dash) => {
         return (
@@ -95,17 +73,6 @@ const Table = () => {
       });
     }
   }
-
-  useEffect(() => {
-    ctx.setDashes((previousDash) => {
-      if (loadedDashes.length > 0) {
-        previousDash = [];
-        // console.log("DashesList: " + dashesList);
-        // console.log("Previous Dash: " + previousDash);
-        return previousDash.push(loadedDashes);
-      }
-    });
-  }, [ctx, loadedDashes]);
 
   return (
     <React.Fragment>
