@@ -1,0 +1,34 @@
+.main-login-container {
+  display: block;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2.4rem;
+  text-align: center;
+}
+
+button.main-login {
+  display: inline;
+  width: 20rem;
+  height: 4.8rem;
+  margin-top: 0rem;
+  color: #fff;
+  background-color: #f03e3e;
+
+  font-size: 1.6rem;
+  border-radius: 0.8rem;
+  border: none;
+
+  cursor: pointer;
+}
+
+button.main-login:hover {
+  display: inline-block;
+  background-color: #fff;
+  color: #f03e3e;
+  border: 1px solid #f03e3e;
+  transition: 300ms;
+}
+
+button.main-login:active {
+  font-size: 1.8rem;
+}

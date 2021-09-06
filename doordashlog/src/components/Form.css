@@ -57,6 +57,7 @@ button.button-toggle:hover {
   color: #f03e3e;
   border: 1px solid #f03e3e;
   transition: 300ms;
+  font-size: 1.8rem;
 }
 
 button.button-toggle:disabled {
@@ -84,6 +85,15 @@ button.ion-button {
   border: none !important;
   background: transparent;
   cursor: pointer;
+}
+
+ion-icon:hover {
+  font-size: 2.6rem;
+  /* transform: rotate(10deg); */
+}
+
+ion-icon:active {
+  font-size: 2.6rem;
 }
 
 /* ****************************** */
@@ -172,10 +182,6 @@ button.ion-button {
 .add-dash-container button:hover {
   color: #fff;
   background-color: #ff6b6b;
-}
-
-.add-dash-container button:active {
-  font-size: 1.8rem;
 }
 
 @media only screen and (max-width: 600px),

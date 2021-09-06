@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./App.css";
-import Form from "./components/Form";
+import AuthContext from "./auth-context";
 import Navbar from "./components/Navbar";
-import Summary from "./components/Summary";
-import Table from "./components/Table";
+import LoggedIn from "./components/LoggedIn";
+import SignInPage from "./components/SignInPage";
 
 function App() {
+  const ctx = useContext(AuthContext);
+
   return (
     <div>
       <Navbar />
-      <Summary />
-      <Form />
-      <Table />
+      {!ctx.isLoggedIn && <SignInPage />}
+      {ctx.isLoggedIn && <LoggedIn />}
     </div>
   );
 }

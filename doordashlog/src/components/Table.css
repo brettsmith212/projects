@@ -74,9 +74,6 @@ button.order:hover {
   color: #fff;
   background-color: #ff6b6b;
   transition: 300ms;
-}
-
-button.order:active {
   font-size: 1.4rem;
   padding: 1.6rem;
 }

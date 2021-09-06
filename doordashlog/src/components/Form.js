@@ -57,23 +57,6 @@ function Form() {
     netPay = netPay.toFixed(2);
     netPayPerHour = netPayPerHour.toFixed(2);
 
-    // const dash = {
-    //   currentDate,
-    //   totalTime,
-    //   totalOrders,
-    //   totalMiles,
-    //   totalMpg,
-    //   totalGasPrice,
-    //   gasCost,
-    //   milesPerOrder,
-    //   costPerOrder,
-    //   totalPay,
-    //   costToOperate,
-    //   netPay,
-    //   netPayPerHour,
-    // };
-    // console.log(dash);
-
     const enteredDate = dateInputRef.current.value;
     const enteredTime = timeInputRef.current.value;
     const enteredOrders = ordersInputRef.current.value;
@@ -102,17 +85,6 @@ function Form() {
     if (!formIsValid) {
       return;
     }
-
-    // fetch("https://react-http-3051a-default-rtdb.firebaseio.com/orders.json", {
-    //   method: "POST",
-    //   body: JSON.stringify(dash),
-    // })
-    //   .then(() => {
-    //     // console.log("Dash Added");
-    //   })
-    //   .catch((error) => {
-    //     console.error("Something went wrong!");
-    //   });
 
     // Send data to firestore
     const { uid, photoURL, email } = auth.currentUser;
