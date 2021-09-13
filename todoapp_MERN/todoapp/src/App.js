@@ -12,8 +12,6 @@ const list = [
   { id: 3, title: "TEST3", completed: false },
 ];
 
-// Application
-
 const App = () => {
   const [todoList, setTodoList] = useState(list);
 
