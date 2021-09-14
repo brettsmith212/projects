@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import AuthContext from "../auth-context";
+import "./Chart.css";
 
 import { Line } from "react-chartjs-2";
 
@@ -18,15 +19,14 @@ const Chart = () => {
       {
         label: "Total Pay",
         data: [],
-        backgroundColor: "rgba(255, 99, 132, 0.6)",
+        backgroundColor: "#51cf66",
+        borderColor: "#51cf66",
       },
     ],
   };
 
   let firebaseFiltered = [];
   const ctx = useContext(AuthContext);
-
-  const [chartData, setChartData] = useState(chartDataset);
 
   // Pull Dashes for Current User from Firebase
   const dashesRef = firestore.collection("dashes");
@@ -47,21 +47,36 @@ const Chart = () => {
     }
   }
 
-  // setChartData(chartDataset);
-
   return (
     <div className="chart">
       <Line
-        data={chartData}
+        data={chartDataset}
         options={{
-          title: {
-            display: true,
-            text: "Total Pay",
-            fontSize: 25,
+          plugins: {
+            title: {
+              display: true,
+              text: "Total Pay per Dash",
+              fontSize: 25,
+              position: "top",
+            },
+            legend: {
+              display: false,
+              position: "right",
+            },
           },
-          legend: {
-            display: true,
-            position: "right",
+          scales: {
+            y: {
+              suggestedMin: 0,
+              suggestedMax: 100,
+              grid: {
+                display: false,
+              },
+            },
+            x: {
+              grid: {
+                display: false,
+              },
+            },
           },
         }}
       ></Line>
