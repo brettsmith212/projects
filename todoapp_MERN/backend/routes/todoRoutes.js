@@ -1,11 +1,15 @@
 const router = require("express").Router();
-const Todo = require("../models/Todo")
+const Todo = require("../models/Todo");
 
 router.get("/", (req, res) => {
-    Todo.find((err, result) => {
-        if(err) throw new Error(err);
-        console.log(result)
-    })
-})
+  Todo.find((err, result) => {
+    if (err) throw new Error(err);
+    console.log(result);
+  });
+});
 
-module.exports = router
+router.post("/new", (req, res) => {
+  console.log(req.body);
+});
+
+module.exports = router;

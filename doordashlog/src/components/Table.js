@@ -11,7 +11,7 @@ const firestore = firebase.firestore();
 const auth = firebase.auth();
 
 const Table = () => {
-  const [isAscending, setisAscending] = useState(true);
+  const [isAscending, setisAscending] = useState(false);
   const isLoading = false;
 
   let dashesList;
