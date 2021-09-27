@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { animate } from "motion";
+import { useState } from "react";
 
 function App() {
+  const [isAnimated, setIsAnimated] = useState(false);
+  const animateHandler = () => {
+    setIsAnimated(!isAnimated);
+    if (isAnimated === false) {
+      animate("#box", { x: 100, rotate: 45 }, { duration: 0.5 });
+    } else {
+      animate("#box", { x: 0, rotate: -90 }, { duration: 0.5 });
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Animate Motion</h1>
+      <div id="box"></div>
+      <button type="submit" className="btn" onClick={animateHandler}>
+        Roll Box
+      </button>
     </div>
   );
 }
