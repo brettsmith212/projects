@@ -102,10 +102,10 @@ function App() {
   return (
     <div>
       <h1>Crypto App</h1>
+      <p>${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
       <button value={"BTC-USD"} onClick={handleSelect}>
         BTC
       </button>
-      <p>{price}</p>
     </div>
   );
 }
