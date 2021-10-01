@@ -20,7 +20,7 @@ function Navbar() {
           </div>
         )}
         {ctx.isLoggedIn && (
-          <p className="item-c">{`Logged in as ${ctx.user.email}`}</p>
+          <p className="login-email">{`Logged in as ${ctx.user.email}`}</p>
         )}
       </div>
 
