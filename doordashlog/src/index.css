@@ -85,5 +85,5 @@ body {
   font-size: 1.4rem;
 
   /* Only works if there is nothing absolutely positioned in relation to body */
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }

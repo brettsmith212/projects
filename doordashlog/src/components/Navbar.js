@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import AuthContext from "../auth-context";
 import "./Navbar.css";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 
 function Navbar() {
   const ctx = useContext(AuthContext);
@@ -8,10 +10,14 @@ function Navbar() {
   return (
     <React.Fragment>
       <div className="navbar">
-        <h1 className="item-a">DoorDash Log</h1>
+        <h1 className="logo">DoorDash Log</h1>
         {!ctx.isLoggedIn && <h3 className="item-b">Welcome!</h3>}
         {ctx.isLoggedIn && (
-          <h3 className="item-b">{`Welcome, ${ctx.user.displayName}`}</h3>
+          <div className="topbarIconContainer">
+            <NotificationsNoneIcon className="iconBadge" />
+            <SettingsRoundedIcon className="iconBadge" />
+            <img src={ctx.user.photoURL} alt="Profile" className="topAvatar" />
+          </div>
         )}
         {ctx.isLoggedIn && (
           <p className="item-c">{`Logged in as ${ctx.user.email}`}</p>
@@ -19,11 +25,6 @@ function Navbar() {
       </div>
 
       <div className="login-container">
-        {/* {!ctx.isLoggedIn && (
-          <button className="login" onClick={() => ctx.signIn()}>
-            Sign In
-          </button>
-        )} */}
         {ctx.isLoggedIn && (
           <button className="login" onClick={() => ctx.signOut()}>
             Sign Out
