@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import LoggedIn from "./components/LoggedIn";
 import SignInPage from "./components/SignInPage";
 import Sidebar from "./components/sidebar/Sidebar";
+import Home from "./components/pages/home/Home";
 
 function App() {
   const ctx = useContext(AuthContext);
@@ -14,7 +15,7 @@ function App() {
       <Navbar />
       <div className="container">
         <Sidebar />
-        <div className="others">Others</div>
+        <Home />
       </div>
       {!ctx.isLoggedIn && <SignInPage />}
       {ctx.isLoggedIn && <LoggedIn />}
