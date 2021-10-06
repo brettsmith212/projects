@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import AuthContext from "../auth-context";
+import AuthContext from "../../auth-context";
 import "./Navbar.css";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";

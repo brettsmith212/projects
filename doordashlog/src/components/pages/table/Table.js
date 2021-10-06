@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import AuthContext from "../auth-context";
+import AuthContext from "../../../auth-context";
 import "./Table.css";
 
-import firebase from "../Firebase";
+import firebase from "../../../Firebase";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -75,7 +75,7 @@ const Table = () => {
   }
 
   return (
-    <React.Fragment>
+    <div className="table">
       {!isLoading && (
         <div className="table-container">
           <div className="order-container">
@@ -111,7 +111,7 @@ const Table = () => {
         </div>
       )}
       {isLoading && <h1>Loading</h1>}
-    </React.Fragment>
+    </div>
   );
 };
 

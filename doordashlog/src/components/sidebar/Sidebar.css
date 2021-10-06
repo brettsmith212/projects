@@ -2,16 +2,16 @@
   flex: 1;
   height: calc(100vh - 50px);
   position: sticky;
-  top: 50px;
+  top: 5rem;
 }
 
 .sidebarWrapper {
-  padding: 20px;
+  padding: 2rem;
   color: #555;
 }
 
 .sidebarMenu {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 .sidebarTitle {
@@ -22,15 +22,15 @@
 
 .sidebarList {
   list-style: none;
-  padding: 5px;
+  padding: 0.5rem;
 }
 
 .sidebarListItem {
-  padding: 5px;
+  padding: 0.5rem;
   cursor: pointer;
   display: flex;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 1rem;
 }
 
 .sidebarListItem.active,
@@ -39,5 +39,10 @@
 }
 
 .sidebarIcon {
-  margin-right: 5px;
+  margin-right: 0.5rem;
+}
+
+.link {
+  text-decoration: none;
+  color: #555;
 }
