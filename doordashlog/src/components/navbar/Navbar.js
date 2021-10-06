@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "../../auth-context";
 import "./Navbar.css";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
@@ -10,7 +11,9 @@ function Navbar() {
   return (
     <React.Fragment>
       <div className="navbar">
-        <h1 className="logo">DoorDash Log</h1>
+        <Link to="/" className="logoLink">
+          <h1 className="logo">DoorDash Log</h1>
+        </Link>
         {!ctx.isLoggedIn && <h3 className="item-b">Welcome!</h3>}
         {ctx.isLoggedIn && (
           <div className="topbarIconContainer">
