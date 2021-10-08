@@ -12,7 +12,7 @@ button.main-login {
   height: 4.8rem;
   margin-top: 0rem;
   color: #fff;
-  background-color: #f03e3e;
+  background-color: #0099ff;
 
   font-size: 1.6rem;
   border-radius: 0.8rem;
@@ -24,11 +24,15 @@ button.main-login {
 button.main-login:hover {
   display: inline-block;
   background-color: #fff;
-  color: #f03e3e;
-  border: 1px solid #f03e3e;
+  color: #0099ff;
+  border: 1px solid #0099ff;
   transition: 300ms;
 }
 
 button.main-login:active {
   font-size: 1.8rem;
+}
+
+.waves {
+  width: 100%;
 }
