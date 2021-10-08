@@ -4,6 +4,7 @@ import AuthContext from "../../auth-context";
 import "./Navbar.css";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
+import lightning from "../icons/flash-outline.svg";
 
 function Navbar() {
   const ctx = useContext(AuthContext);
@@ -12,7 +13,10 @@ function Navbar() {
     <React.Fragment>
       <div className="navbar">
         <Link to="/" className="logoLink">
-          <h1 className="logo">DoorDash Log</h1>
+          <div className="logo-container">
+            <h1 className="logo">Lightning Ledger</h1>
+            <img src={lightning} alt="lightning" className="lightning" />
+          </div>
         </Link>
         {!ctx.isLoggedIn && (
           <button className="header-login" onClick={() => ctx.signIn()}>
@@ -31,13 +35,15 @@ function Navbar() {
         )}
       </div>
 
-      <div className="login-container">
-        {ctx.isLoggedIn && (
-          <button className="login" onClick={() => ctx.signOut()}>
-            Sign Out
-          </button>
-        )}
-      </div>
+      {ctx.isLoggedIn && (
+        <div className="login-container">
+          {ctx.isLoggedIn && (
+            <button className="login" onClick={() => ctx.signOut()}>
+              Sign Out
+            </button>
+          )}
+        </div>
+      )}
     </React.Fragment>
   );
 }

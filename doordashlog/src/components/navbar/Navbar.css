@@ -17,9 +17,17 @@
   z-index: 999;
 }
 
+.logoLink {
+  display: flex;
+}
+
 .logo {
   font-size: 3.6rem;
   cursor: pointer;
+}
+
+.ionicon-lightning {
+  font-size: 8px;
 }
 
 .logoLink {
