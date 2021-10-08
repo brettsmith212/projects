@@ -4,7 +4,7 @@ import "./App.css";
 import AuthContext from "./auth-context";
 import Navbar from "./components/navbar/Navbar";
 import LoggedIn from "./components/loggedIn/LoggedIn";
-import SignInPage from "./components/hero/SignInPage";
+import LoggedOut from "./components/loggedOut/LoggedOut";
 
 function App() {
   const ctx = useContext(AuthContext);
@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      {!ctx.isLoggedIn && <SignInPage />}
+      {!ctx.isLoggedIn && <LoggedOut />}
       {ctx.isLoggedIn && <LoggedIn />}
     </Router>
   );

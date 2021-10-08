@@ -1,9 +1,9 @@
 import React from "react";
 import "./LoggedIn.css";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Home from "../../components/pages/home/Home";
-import Analytics from "../../components/pages/analytics/Analytics";
-import Table from "../../components/pages/table/Table";
+import Home from "../dashboardTabs/home/Home";
+import Analytics from "../dashboardTabs/analytics/Analytics";
+import Table from "../dashboardTabs/table/Table";
 import { Switch, Route } from "react-router-dom";
 
 function LoggedIn() {

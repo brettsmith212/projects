@@ -14,7 +14,11 @@ function Navbar() {
         <Link to="/" className="logoLink">
           <h1 className="logo">DoorDash Log</h1>
         </Link>
-        {!ctx.isLoggedIn && <h3 className="item-b">Sign In With Google</h3>}
+        {!ctx.isLoggedIn && (
+          <button className="header-login" onClick={() => ctx.signIn()}>
+            Sign In Now!
+          </button>
+        )}
         {ctx.isLoggedIn && (
           <div className="topbarIconContainer">
             <NotificationsNoneIcon className="iconBadge" />
