@@ -37,7 +37,11 @@ export const AuthContextProvider = (props) => {
       .auth()
       .signInWithPopup(provider)
       .then((res) => {
-        console.log(res);
+        if (res.ok) {
+          console.log(res);
+        } else {
+          throw new Error("Something went wrong");
+        }
       })
       .catch((e) => {
         console.log(e);
