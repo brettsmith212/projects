@@ -13,14 +13,17 @@
     "chart.js": "^3.5.1",
     "firebase": "^9.0.1",
     "firebase-functions": "^3.15.5",
+    "npm-check-updates": "^11.8.5",
     "react": "^17.0.2",
     "react-chartjs-2": "^3.0.4",
     "react-dom": "^17.0.2",
     "react-firebase-hooks": "^3.0.4",
+    "react-icons": "^4.3.1",
     "react-redux-firebase": "^3.10.0",
     "react-router-dom": "^5.3.0",
     "react-scripts": "^4.0.3",
-    "redux-firestore": "^0.15.0",
+    "redux-firestore": "^0.5.8",
+    "styled-components": "^5.3.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
