@@ -4,7 +4,6 @@ import AuthContext from "../../auth-context";
 import "./Navbar.css";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
-import lightning from "../icons/flash-outline.svg";
 
 function Navbar() {
   const ctx = useContext(AuthContext);
@@ -15,7 +14,6 @@ function Navbar() {
         <Link to="/" className="logoLink">
           <div className="logo-container">
             <h1 className="logo">Lightning Ledger</h1>
-            <img src={lightning} alt="lightning" className="lightning" />
           </div>
         </Link>
         {!ctx.isLoggedIn && (
