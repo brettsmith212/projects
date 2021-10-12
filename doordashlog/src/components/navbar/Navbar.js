@@ -1,12 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../auth-context";
 import "./Navbar.css";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
+import { AddDashModal } from "../featuredInfo/AddDashModal";
 
 function Navbar() {
   const ctx = useContext(AuthContext);
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal((prev) => !prev);
+  };
 
   return (
     <React.Fragment>
@@ -36,9 +42,15 @@ function Navbar() {
       {ctx.isLoggedIn && (
         <div className="login-container">
           {ctx.isLoggedIn && (
-            <button className="login" onClick={() => ctx.signOut()}>
-              Sign Out
-            </button>
+            <>
+              <button className="login" onClick={() => ctx.signOut()}>
+                Sign Out
+              </button>
+              <button className="login" onClick={openModal}>
+                Add Dash
+              </button>
+              <AddDashModal showModal={showModal} setShowModal={setShowModal} />
+            </>
           )}
         </div>
       )}

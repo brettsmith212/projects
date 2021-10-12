@@ -19,6 +19,7 @@ function Form() {
   const [totalGasPrice, setTotalGasPrice] = useState("");
   const [totalPay, setTotalPay] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   const dateInputRef = useRef();
   const timeInputRef = useRef();
@@ -121,11 +122,33 @@ function Form() {
     }, 2000);
   };
 
+  const formActive = showForm ? "form active" : "form";
+
   return (
     <div>
-      <div className="form active">
+      <div className="add-dash-container">
+        {!showForm && (
+          <button
+            className="button-toggle"
+            onClick={() => {
+              setShowForm(!showForm);
+            }}
+          >
+            Add Dash
+          </button>
+        )}
+      </div>
+      <div className={formActive}>
         <div className="form-header">
           <h2>Add New Dash</h2>
+          <button
+            className="ion-button"
+            onClick={() => {
+              setShowForm(!showForm);
+            }}
+          >
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </button>
         </div>
         <form onSubmit={handleSubmit}>
           <label htmlFor="date">Date:</label>
