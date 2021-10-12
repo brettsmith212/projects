@@ -6,7 +6,7 @@ function LoggedOut() {
   return (
     <main className="main">
       <div className="hero">
-        <h1 className="title">Welcome To Lightning Ledger!</h1>
+        <h1 className="title">Welcome To Delivery Log!</h1>
         <img src={waves} alt="waves" className="waves" />
       </div>
       <div className="features"></div>

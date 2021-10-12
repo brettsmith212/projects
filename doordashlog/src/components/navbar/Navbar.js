@@ -19,7 +19,7 @@ function Navbar() {
       <div className="navbar">
         <Link to="/" className="logoLink">
           <div className="logo-container">
-            <h1 className="logo">Lightning Ledger</h1>
+            <h1 className="logo">Delivery Log</h1>
           </div>
         </Link>
         {!ctx.isLoggedIn && (

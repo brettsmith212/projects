@@ -15,7 +15,7 @@
 }
 
 .form h2 {
-  color: #f03e3e;
+  color: #0099ff;
   font-size: 2.4rem;
 }
 
@@ -43,7 +43,7 @@ button.button-toggle {
   height: 3.6rem;
   font-size: 1.8rem;
   margin-top: 1.2rem;
-  background: #f03e3e;
+  background: #0099ff;
   color: #fff;
   border: 0;
   padding: 0.8rem;
@@ -54,8 +54,8 @@ button.button-toggle {
 button.button-toggle:hover {
   display: inline-block;
   background-color: #fff;
-  color: #f03e3e;
-  border: 1px solid #f03e3e;
+  color: #0099ff;
+  border: 1px solid #0099ff;
   transition: 300ms;
   font-size: 1.8rem;
 }
@@ -76,7 +76,7 @@ button.button-toggle:disabled {
 
 ion-icon {
   font-size: 2.4rem;
-  color: #f03e3e;
+  color: #0099ff;
 }
 
 button.ion-button {
@@ -111,7 +111,7 @@ ion-icon:active {
 .wave {
   width: 1.2rem;
   height: 2.4rem;
-  background: linear-gradient(45deg, #f03e3e, rgb(250, 226, 226));
+  background: linear-gradient(45deg, #0099ff, rgb(250, 226, 226));
   margin: 10px;
   animation: wave 1s linear infinite;
   border-radius: 20px;
@@ -170,7 +170,7 @@ ion-icon:active {
   /* margin-right: 4.8rem; */
   margin-top: 0rem;
   color: #fff;
-  background-color: #f03e3e;
+  background-color: #0099ff;
 
   /* padding: 1.6rem; */
   font-size: 1.6rem;
@@ -182,7 +182,7 @@ ion-icon:active {
 
 .add-dash-container button:hover {
   color: #fff;
-  background-color: #ff6b6b;
+  background-color: #66c2ff;
 }
 
 @media only screen and (max-width: 600px),
