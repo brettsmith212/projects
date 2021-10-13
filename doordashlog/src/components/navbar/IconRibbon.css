@@ -1,0 +1,95 @@
+:root {
+  --bg: #fff;
+  --bg-accent: #6f6f6f;
+  --text-color: #0099ff;
+  --nav-size: 60px;
+  --border: 1px solid #66c2ff;
+  --border-radius: 8px;
+  --speed: 500ms;
+}
+
+.topbarIconContainer {
+  padding-right: 2.4rem;
+  padding-top: 1.2rem;
+  grid-column-start: 3;
+  grid-row-start: 1;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
+  color: #555;
+}
+
+.iconBadge {
+  margin-right: 2rem;
+  transform: scale(1.8);
+}
+
+.topAvatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 58px;
+  width: 300px;
+  transform: translateX(-45%);
+  background-color: var(--bg);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  overflow: hidden;
+
+  transition: height var(--speed) ease;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: var(--text-color);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 0.5rem;
+}
+
+.menu-item:hover {
+  background-color: #eeeeee;
+}
+
+.menu-primary-enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+.menu-primary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.menu-primary-exit {
+  position: absolute;
+}
+.menu-primary-exit-active {
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-enter {
+  position: absolute;
+  transform: translateX(110%);
+}
+.menu-secondary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.menu-secondary-exit {
+  position: absolute;
+}
+.menu-secondary-exit-active {
+  transform: translateX(110%);
+  transition: all var(--speed) ease;
+}

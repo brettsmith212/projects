@@ -2,9 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../auth-context";
 import "./Navbar.css";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import { AddDashModal } from "../featuredInfo/AddDashModal";
+import IconRibbon from "./IconRibbon";
 
 function Navbar() {
   const ctx = useContext(AuthContext);
@@ -27,13 +26,7 @@ function Navbar() {
             Sign In Now!
           </button>
         )}
-        {ctx.isLoggedIn && (
-          <div className="topbarIconContainer">
-            <NotificationsNoneIcon className="iconBadge" />
-            <SettingsRoundedIcon className="iconBadge" />
-            <img src={ctx.user.photoURL} alt="Profile" className="topAvatar" />
-          </div>
-        )}
+        {ctx.isLoggedIn && <IconRibbon />}
         {ctx.isLoggedIn && (
           <p className="login-email">{`Logged in as ${ctx.user.email}`}</p>
         )}
@@ -43,9 +36,6 @@ function Navbar() {
         <div className="login-container">
           {ctx.isLoggedIn && (
             <>
-              <button className="login" onClick={() => ctx.signOut()}>
-                Sign Out
-              </button>
               <button className="login" onClick={openModal}>
                 Add Dash
               </button>

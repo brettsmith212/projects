@@ -64,31 +64,6 @@ button.header-login:active {
   font-size: 1.8rem;
 }
 
-.topbarIconContainer {
-  padding-right: 2.4rem;
-  padding-top: 1.2rem;
-  grid-column-start: 3;
-  grid-row-start: 1;
-  justify-self: end;
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
-  cursor: pointer;
-  color: #555;
-}
-
-.iconBadge {
-  margin-right: 2rem;
-  transform: scale(1.8);
-}
-
-.topAvatar {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
 .login-email {
   color: #888;
   padding-right: 2.4rem;
