@@ -8,11 +8,12 @@ const Background = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   position: fixed;
-  top: 1rem;
+  top: 0rem;
+  right: 0rem;
   display: flex;
   justify-content: center;
   align-content: center;
-  z-index: 10;
+  z-index: 999;
 `;
 
 const ModalWrapper = styled.div`
