@@ -3,12 +3,18 @@
   padding: 2.4rem;
 }
 
-.category-dropdown {
+.dropdown-bar {
   display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.dropdown-primary {
+  width: 20%;
 }
 
 .chart {
   margin: 0 auto;
-  padding: 6.4rem;
+  padding: 3.2rem;
   max-width: 125rem;
 }

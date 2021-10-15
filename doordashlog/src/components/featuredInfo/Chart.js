@@ -94,15 +94,17 @@ const Chart = () => {
 
   return (
     <div className="chart-container">
-      <div className="category-dropdown">
-        <Dropdown
-          placeholder="Select Category"
-          defaultValue={category.key}
-          fluid
-          selection
-          options={categoryOptions}
-          onChange={categorySelectionHandler}
-        />
+      <div className="dropdown-bar">
+        <div className="dropdown-primary">
+          <Dropdown
+            placeholder="Select Category"
+            defaultValue={category.key}
+            fluid
+            selection
+            options={categoryOptions}
+            onChange={categorySelectionHandler}
+          />
+        </div>
       </div>
       <div className="chart">
         <Line
