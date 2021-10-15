@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import AuthContext from "../../auth-context";
 import "./Chart.css";
 
 import { Line } from "react-chartjs-2";
+import { Dropdown } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
 
 import firebase from "../../Firebase";
 import "firebase/compat/firestore";
@@ -13,11 +15,16 @@ const firestore = firebase.firestore();
 const auth = firebase.auth();
 
 const Chart = () => {
+  const [category, setCategory] = useState({
+    key: "totalPay",
+    title: "Total Pay",
+  });
+
   let chartDataset = {
     labels: [],
     datasets: [
       {
-        label: "Total Pay",
+        label: category.title,
         data: [],
         backgroundColor: "#51cf66",
         borderColor: "#51cf66",
@@ -40,46 +47,96 @@ const Chart = () => {
       firebaseFiltered = firebaseDashes.flatMap((dash) =>
         uid === dash.uid ? dash : []
       );
-      for (let i = 0; i < firebaseFiltered.length; i++) {
-        chartDataset.labels.push(firebaseFiltered[i].currentDate);
-        chartDataset.datasets[0].data.push(firebaseFiltered[i].totalPay);
+      if (category.key === "totalPay") {
+        for (let i = 0; i < firebaseFiltered.length; i++) {
+          chartDataset.labels.push(firebaseFiltered[i].currentDate);
+          chartDataset.datasets[0].data.push(firebaseFiltered[i].totalPay);
+        }
+      }
+      if (category.key === "netPay") {
+        for (let i = 0; i < firebaseFiltered.length; i++) {
+          chartDataset.labels.push(firebaseFiltered[i].currentDate);
+          chartDataset.datasets[0].data.push(firebaseFiltered[i].netPay);
+        }
+      }
+      if (category.key === "netPayPerHour") {
+        for (let i = 0; i < firebaseFiltered.length; i++) {
+          chartDataset.labels.push(firebaseFiltered[i].currentDate);
+          chartDataset.datasets[0].data.push(firebaseFiltered[i].netPayPerHour);
+        }
       }
     }
   }
 
+  const categoryOptions = [
+    { key: "totalPay", value: "totalPay", text: "Total Pay" },
+    { key: "netPay", value: "netPay", text: "Net Pay" },
+    { key: "netPayPerHour", value: "netPayPerHour", text: "Net Pay per Hour" },
+  ];
+
+  const categorySelectionHandler = (event, data) => {
+    let dataValue = data.value;
+    let dataTitle = data.options
+      .filter((option) => {
+        if (option.key === dataValue) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+      .map((option) => {
+        return option.text;
+      });
+    console.log(dataValue);
+    console.log(dataTitle);
+    setCategory({ key: dataValue, title: dataTitle });
+  };
+
   return (
-    <div className="chart">
-      <Line
-        data={chartDataset}
-        options={{
-          plugins: {
-            title: {
-              display: true,
-              text: "Total Pay per Dash",
-              fontSize: 25,
-              position: "top",
-            },
-            legend: {
-              display: false,
-              position: "right",
-            },
-          },
-          scales: {
-            y: {
-              suggestedMin: 0,
-              suggestedMax: 100,
-              grid: {
+    <div className="chart-container">
+      <div className="category-dropdown">
+        <Dropdown
+          placeholder="Select Category"
+          defaultValue={category.key}
+          fluid
+          selection
+          options={categoryOptions}
+          onChange={categorySelectionHandler}
+        />
+      </div>
+      <div className="chart">
+        <Line
+          data={chartDataset}
+          options={{
+            plugins: {
+              title: {
+                display: true,
+                text: category.title,
+                fontSize: 25,
+                position: "top",
+              },
+              legend: {
                 display: false,
+                position: "right",
               },
             },
-            x: {
-              grid: {
-                display: false,
+            scales: {
+              y: {
+                suggestedMin: 0,
+                suggestedMax: 100,
+                grid: {
+                  display: false,
+                },
+              },
+              x: {
+                grid: {
+                  display: false,
+                },
               },
             },
-          },
-        }}
-      ></Line>
+          }}
+        ></Line>
+      </div>
     </div>
   );
 };

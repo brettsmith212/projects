@@ -68,7 +68,7 @@ function DropdownMenu() {
   }
 
   return (
-    <div className="dropdown" style={{ height: menuHeight }}>
+    <div className="dropdown-menu" style={{ height: menuHeight }}>
       <CSSTransition
         in={activeMenu === "main"}
         unmountOnExit
