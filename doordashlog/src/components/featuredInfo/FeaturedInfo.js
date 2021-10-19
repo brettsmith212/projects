@@ -1,6 +1,13 @@
 import React, { useContext } from "react";
 import AuthContext from "../../auth-context";
 import "./FeaturedInfo.css";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
+import DirectionsCarFilledIcon from "@mui/icons-material/DirectionsCarFilled";
+import RotateLeftIcon from "@mui/icons-material/RotateLeft";
 
 import firebase from "../../Firebase";
 import "firebase/compat/firestore";
@@ -21,6 +28,11 @@ function Summary() {
   let netPayPerHourTotal = 0;
   let ordersTotal = 0;
   let dashesTotal = 0;
+  let mpgTotal = 0;
+  let milesTotal = 0;
+  let gasCostTotal = 0;
+  let costPerOrderTotal = 0;
+  let gasPriceTotal = 0;
 
   // Pull Dashes for Current User from Firebase
   const dashesRef = firestore.collection("dashes");
@@ -81,32 +93,98 @@ function Summary() {
     dashesTotal = loadedDashes.reduce((acc, cur) => {
       return acc + 1;
     }, 0);
+
+    mpgTotal = loadedDashes.reduce((acc, cur) => {
+      return acc + parseFloat(cur.totalMpg);
+    }, 0);
+
+    milesTotal = loadedDashes.reduce((acc, cur) => {
+      return acc + parseFloat(cur.totalMiles);
+    }, 0);
+
+    gasCostTotal = loadedDashes.reduce((acc, cur) => {
+      return acc + parseFloat(cur.gasCost);
+    }, 0);
+
+    costPerOrderTotal = loadedDashes.reduce((acc, cur) => {
+      return acc + parseFloat(cur.costPerOrder);
+    }, 0);
+
+    gasPriceTotal = loadedDashes.reduce((acc, cur) => {
+      return acc + parseFloat(cur.totalGasPrice);
+    }, 0);
   }
 
   const hoursDrivenTotal = minsDrivenTotal / 60;
   const netPayPerHourAverage = netPayPerHourTotal / dashesTotal;
+  const mpgAverage = mpgTotal / dashesTotal;
+  const costPerOrderAverage = costPerOrderTotal / ordersTotal;
+  const gasPriceAverage = gasPriceTotal / dashesTotal;
 
   return (
     <div className="summary-container">
       <div className="summary-box">
-        <h2>Total Pay</h2>
-        <h3 className="summary-green">${payTotal.toFixed(2)}</h3>
+        <AccountBalanceIcon className="summary-block-icon" fontSize="large" />
+        <h2 className="summary-title">Total Pay</h2>
+        <h3 className="summary-green summary-amount">${payTotal.toFixed(2)}</h3>
       </div>
       <div className="summary-box">
-        <h2>Total Net Pay</h2>
-        <h3 className="summary-green">${netPayTotal.toFixed(2)}</h3>
+        <AttachMoneyIcon className="summary-block-icon" fontSize="large" />
+        <h2 className="summary-title">Total Net Pay</h2>
+        <h3 className="summary-green summary-amount">
+          ${netPayTotal.toFixed(2)}
+        </h3>
       </div>
       <div className="summary-box">
-        <h2>Average Net $ / Hr</h2>
-        <h3 className="summary-green">${netPayPerHourAverage.toFixed(2)}</h3>
+        <AttachMoneyIcon className="summary-block-icon" fontSize="large" />
+        <h2 className="summary-title">Average Net $ / Hr</h2>
+        <h3 className="summary-green summary-amount">
+          ${netPayPerHourAverage.toFixed(2)}
+        </h3>
       </div>
       <div className="summary-box">
-        <h2>Total Orders</h2>
-        <h3>{ordersTotal.toFixed(0)}</h3>
+        <TrendingUpIcon className="summary-block-icon" fontSize="large" />
+        <h2 className="summary-title">Total Orders</h2>
+        <h3 className="summary-amount">{ordersTotal.toFixed(0)}</h3>
       </div>
       <div className="summary-box">
-        <h2>Total Hours Driven</h2>
-        <h3>{hoursDrivenTotal.toFixed(2)} hrs</h3>
+        <AccessTimeIcon className="summary-block-icon" fontSize="large" />
+        <h2 className="summary-title">Total Hours Driven</h2>
+        <h3 className="summary-amount">{hoursDrivenTotal.toFixed(2)} hrs</h3>
+      </div>
+      <div className="summary-box">
+        <RotateLeftIcon className="summary-block-icon" fontSize="large" />
+        <h2 className="summary-title">Average MPG</h2>
+        <h3 className="summary-amount">{mpgAverage.toFixed(1)} mpg</h3>
+      </div>
+      <div className="summary-box">
+        <DirectionsCarFilledIcon
+          className="summary-block-icon"
+          fontSize="large"
+        />
+        <h2 className="summary-title">Total Miles Driven</h2>
+        <h3 className="summary-amount">{milesTotal.toFixed(1)} mi</h3>
+      </div>
+      <div className="summary-box">
+        <LocalGasStationIcon className="summary-block-icon" fontSize="large" />
+        <h2 className="summary-title">Total Gas Cost</h2>
+        <h3 className="summary-red summary-amount">
+          ${gasCostTotal.toFixed(2)}
+        </h3>
+      </div>
+      <div className="summary-box">
+        <AttachMoneyIcon className="summary-block-icon" fontSize="large" />
+        <h2 className="summary-title">Avg Gas Price</h2>
+        <h3 className="summary-red summary-amount">
+          ${gasPriceAverage.toFixed(2)}
+        </h3>
+      </div>
+      <div className="summary-box">
+        <AttachMoneyIcon className="summary-block-icon" fontSize="large" />
+        <h2 className="summary-title">Avg Cost per Order</h2>
+        <h3 className="summary-red summary-amount">
+          ${costPerOrderAverage.toFixed(2)}
+        </h3>
       </div>
     </div>
   );
