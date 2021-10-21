@@ -11,19 +11,21 @@ const Background = styled.div`
   top: 0rem;
   right: 0rem;
   display: flex;
-  justify-content: center;
-  align-content: center;
+  justify-content: safe center;
+  align-content: safe center;
   z-index: 999;
 `;
 
 const ModalWrapper = styled.div`
+  max-height: calc(100vh - 15rem);
+  overflow-y: auto;
   width: 45rem;
-  height: 70rem;
+  height: 150rem;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
   position: fixed;
-  top: 15rem;
+  top: 10rem;
   z-index: 10;
   border-radius: 10px;
   display: grid;
