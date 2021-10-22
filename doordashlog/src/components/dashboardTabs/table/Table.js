@@ -75,7 +75,7 @@ const Table = () => {
   }
 
   return (
-    <div className="table">
+    <div className="table-page">
       {!isLoading && (
         <div className="table-container">
           <div className="order-container">

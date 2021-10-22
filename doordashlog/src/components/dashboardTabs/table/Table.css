@@ -1,5 +1,7 @@
-.table {
+.table-page {
   flex: 4;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .table-container {
@@ -15,14 +17,14 @@
 
 .table-header th {
   padding: 0.8rem;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .table-body td {
-  padding-top: 0.8rem;
-  padding-bottom: 0.8rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
   color: #888;
-  font-size: 1.4rem;
+  font-size: 1rem;
   text-align: center;
 }
 
@@ -142,8 +144,8 @@ button.order:hover {
     padding: 0;
     margin: 0;
     width: 100%;
-    height: 3.6rem;
-    font-size: 1.8rem;
+    height: 2.4rem;
+    font-size: 1.2rem;
     border-radius: 0.8rem;
     background: #f03e3e;
     color: white;
