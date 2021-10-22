@@ -14,9 +14,12 @@ function LoggedOut() {
       </div>
       <div className="features">
         <h2 className="features-header">
-          A delivery dashboard for everyone...
+          An easier way to monitor and calculate your earnings
         </h2>
         <div className="features-images">
+          <video className="tutorial-video" autoPlay loop>
+            <source src={require("../images/tutorial.mov")} type="video/mp4" />
+          </video>
           <img
             src={require("../images/home.png")}
             alt="home screenshot"
