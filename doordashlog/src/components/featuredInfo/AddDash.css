@@ -6,7 +6,7 @@
   text-align: center;
 }
 
-.form.active {
+.active {
   display: block;
   max-width: 40rem;
   margin: 0 auto;

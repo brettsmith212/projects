@@ -33,6 +33,10 @@ const ModalWrapper = styled.div`
   grid-template-rows: 1fr;
   align-content: center;
   justify-content: center;
+  @media only screen and (max-width: 600px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+    max-width: 30rem;
+  }
 `;
 
 const CloseModalButton = styled(MdClose)`
