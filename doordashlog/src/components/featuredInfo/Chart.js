@@ -97,6 +97,7 @@ const Chart = () => {
       <div className="dropdown-bar">
         <div className="dropdown-primary">
           <Dropdown
+            className="test"
             placeholder="Select Category"
             defaultValue={category.key}
             fluid
@@ -111,6 +112,8 @@ const Chart = () => {
           data={chartDataset}
           options={{
             plugins: {
+              responsive: true,
+              maintainAspectRatio: false,
               title: {
                 display: true,
                 text: category.title,
