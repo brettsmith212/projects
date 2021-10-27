@@ -50,6 +50,7 @@
 .features-images {
   /* height: 150rem; */
   height: 100%;
+  width: 90%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, 1fr);
@@ -62,8 +63,8 @@
   grid-row: 1 / 2;
   justify-self: center;
   align-self: center;
-  max-width: 100rem;
-  max-height: 100rem;
+  max-width: 100%;
+  max-height: 100%;
   height: auto;
   width: auto;
 }
