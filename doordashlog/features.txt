@@ -10,3 +10,5 @@ To Do:
     Use the github of previous version to understand dashesLoaded
     Need to find a way to loop through the object (showing up as 1) 
         Maybe there is a way as an array?
+
+Test update
