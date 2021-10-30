@@ -27,13 +27,13 @@ function Navbar() {
           </button>
         )}
         {ctx.isLoggedIn && <IconRibbon />}
-        {ctx.isLoggedIn && (
-          <p className="login-email">{`Logged in as ${ctx.user.email}`}</p>
-        )}
       </div>
 
       {ctx.isLoggedIn && (
         <div className="login-container">
+          {ctx.isLoggedIn && (
+            <p className="login-email">{`Logged in as ${ctx.user.email}`}</p>
+          )}
           {ctx.isLoggedIn && (
             <>
               <button className="login" onClick={openModal}>

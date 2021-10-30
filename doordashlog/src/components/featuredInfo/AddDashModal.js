@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
 import AddDash from "./AddDash";
@@ -51,10 +51,17 @@ const CloseModalButton = styled(MdClose)`
 `;
 
 export const AddDashModal = ({ showModal, setShowModal }) => {
+  const modalRef = useRef();
+
+  const closeModal = (e) => {
+    if (modalRef.current === e.target) {
+      setShowModal(false);
+    }
+  };
   return (
     <>
       {showModal ? (
-        <Background>
+        <Background ref={modalRef} onClick={closeModal}>
           <ModalWrapper showModal={showModal}>
             <AddDash />
             <CloseModalButton

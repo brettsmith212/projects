@@ -10,7 +10,7 @@
 
 .topbarIconContainer {
   padding-right: 2.4rem;
-  padding-top: 1.2rem;
+  /* padding-top: 1.2rem; */
   grid-column-start: 3;
   grid-row-start: 1;
   justify-self: end;
@@ -35,9 +35,9 @@
 
 .dropdown-menu {
   position: absolute;
-  top: 58px;
+  top: 65px;
   width: 300px;
-  transform: translateX(-45%);
+  transform: translateX(-50%);
   background-color: var(--bg);
   border: var(--border);
   border-radius: var(--border-radius);
@@ -92,4 +92,15 @@
 .menu-secondary-exit-active {
   transform: translateX(110%);
   transition: all var(--speed) ease;
+}
+
+@media only screen and (max-width: 768px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  .iconBadge {
+    transform: scale(1.4);
+  }
+  .topAvatar {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }

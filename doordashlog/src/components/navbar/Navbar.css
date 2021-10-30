@@ -1,5 +1,5 @@
 .navbar {
-  height: 15vh;
+  height: 18vh;
   color: #0099ff;
   background-color: #e7f5ff;
 
@@ -53,25 +53,18 @@ button.header-login:active {
 /* User is Logged In */
 
 .login-container {
+  margin-top: 1%;
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
 }
 
 .login-email {
   color: #888;
-  padding-right: 2.4rem;
+  margin-right: 2.4rem;
   font-size: 1.2rem;
   text-align: center;
-  grid-column-start: 3;
-  grid-row-start: 2;
-  justify-self: end;
-  align-self: center;
-}
-
-.loggedin-container {
-  display: flex;
-  justify-content: flex-end;
 }
 
 button.login {
@@ -86,6 +79,9 @@ button.login {
   text-align: center;
   border: 0;
   padding: 1.4rem;
+  margin-top: 1.2rem;
+  margin-right: 2.4rem;
+  margin-bottom: 2.4rem;
   border-radius: 0.8rem;
   cursor: pointer;
 }
@@ -104,6 +100,7 @@ button.login:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10%;
   }
 
   /* Logo styling */
@@ -115,6 +112,7 @@ button.login:hover {
   .logo {
     font-size: 2.2rem;
     margin: 0;
+    text-align: center;
   }
 
   /* User is not Logged In */
@@ -125,11 +123,21 @@ button.login:hover {
 
   /* User is Logged In */
 
-  .login-container {
+  /* .login-container {
     justify-content: center;
     margin-left: 2.4rem;
     margin-right: 2.4rem;
     padding-left: 0;
     padding-right: 0;
+  } */
+  .login-container {
+    align-items: center;
+    margin: 5% 0 0 0;
+  }
+  .login-email {
+    margin: 0;
+  }
+  button.login {
+    margin: 5% 0 5% 0;
   }
 }
