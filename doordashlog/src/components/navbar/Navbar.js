@@ -16,14 +16,14 @@ function Navbar() {
   return (
     <React.Fragment>
       <div className="navbar">
-        <Link to="/" className="logoLink">
+        <Link to="/" className="link">
           <div className="logo-container">
             <h1 className="logo">Delivery Log</h1>
           </div>
         </Link>
         {!ctx.isLoggedIn && (
           <button className="header-login" onClick={() => ctx.signIn()}>
-            Sign In Now!
+            Log In
           </button>
         )}
         {ctx.isLoggedIn && <IconRibbon />}
