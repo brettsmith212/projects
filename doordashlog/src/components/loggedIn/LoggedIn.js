@@ -15,6 +15,7 @@ function LoggedIn() {
         <Route path="/analytics" component={Analytics} />
         <Route path="/table" component={Table} />
       </Switch>
+      <footer></footer>
     </div>
   );
 }

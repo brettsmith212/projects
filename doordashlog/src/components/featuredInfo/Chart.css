@@ -22,9 +22,7 @@
   grid-row: 2 / 3;
   margin: 0 auto;
   padding: 3.2rem;
-  /* max-width: 125rem; */
   width: 100%;
-  /* height: 175rem; */
   overflow: auto;
 }
 
@@ -34,7 +32,17 @@
 
 @media only screen and (max-width: 768px),
   (min-device-width: 768px) and (max-device-width: 1024px) {
+  .chart-container {
+    padding: 1rem;
+  }
   .dropdown-bar {
     justify-content: center;
+  }
+  .dropdown-primary {
+    width: 80%;
+  }
+  Line {
+    width: 100%;
+    height: 100%;
   }
 }

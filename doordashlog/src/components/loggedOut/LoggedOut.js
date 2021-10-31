@@ -1,6 +1,5 @@
 import React from "react";
 import "./LoggedOut.css";
-import waves from "../icons/wave.svg";
 
 function LoggedOut() {
   return (

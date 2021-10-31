@@ -61,21 +61,36 @@
 .menu-item:hover {
   background-color: #eeeeee;
 }
+.h-6.w-6 {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: #0099ff;
+  position: absolute;
+  right: 0.2rem;
+  top: 0.2rem;
+}
+.h-6.w-6:hover {
+  color: #66c2ff;
+}
 
 .menu-primary-enter {
   position: absolute;
-  transform: translateX(-110%);
+  transform: translateX(-110%), scale(0.9);
+  opacity: 0;
 }
 .menu-primary-enter-active {
   transform: translateX(0%);
-  transition: all var(--speed) ease;
+  transition: all var(--speed) ease, opacity 300ms;
+  opacity: 1;
 }
 .menu-primary-exit {
   position: absolute;
+  opacity: 1;
 }
 .menu-primary-exit-active {
-  transform: translateX(-110%);
-  transition: all var(--speed) ease;
+  transform: translateX(-110%), scale(0.9);
+  transition: all var(--speed) ease, opacity 300ms;
+  opacity: 0;
 }
 
 .menu-secondary-enter {
@@ -102,5 +117,10 @@
   .topAvatar {
     width: 2.5rem;
     height: 2.5rem;
+  }
+  .dropdown-menu {
+    top: 90px;
+    width: 20rem;
+    transform: translateX(-52%);
   }
 }

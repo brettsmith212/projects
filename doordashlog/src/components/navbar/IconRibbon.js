@@ -7,20 +7,26 @@ import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 
 function IconRibbon() {
   const ctx = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
   return (
     <div className="topbarIconContainer">
       <NotificationsNoneIcon className="iconBadge" />
       <SettingsRoundedIcon className="iconBadge" />
-      <NavItem source={ctx.user.photoURL} alt={"Profile"} class={"topAvatar"}>
-        <DropdownMenu />
+      <NavItem
+        open={open}
+        setOpen={setOpen}
+        source={ctx.user.photoURL}
+        alt={"Profile"}
+        class={"topAvatar"}
+      >
+        <DropdownMenu open={open} setOpen={setOpen} />
       </NavItem>
     </div>
   );
 }
 
 function NavItem(props) {
-  const [open, setOpen] = useState(false);
-  console.log(open);
+  console.log(`Profile Image Open: ${props.open}`);
 
   return (
     <>
@@ -29,20 +35,21 @@ function NavItem(props) {
         className={props.class}
         alt={props.alt}
         onClick={() => {
-          setOpen(!open);
+          props.setOpen(!props.open);
         }}
       />
 
-      {open && props.children}
+      {props.open && props.children}
     </>
   );
 }
 
-function DropdownMenu() {
+function DropdownMenu(props) {
   const [activeMenu, setActiveMenu] = useState("main");
   const [menuHeight, setMenuHeight] = useState(null);
   const dropdownRef = useRef(null);
   const ctx = useContext(AuthContext);
+  console.log(`DropDown Open: ${props.open}`);
 
   useEffect(() => {
     setMenuHeight(dropdownRef.current?.firstChild.offsetHeight);
@@ -69,6 +76,23 @@ function DropdownMenu() {
 
   return (
     <div className="dropdown-menu" style={{ height: menuHeight }}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        onClick={() => {
+          props.setOpen(!props.open);
+        }}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
       <CSSTransition
         in={activeMenu === "main"}
         unmountOnExit

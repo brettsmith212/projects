@@ -36,6 +36,8 @@
 .sidebarListItem.active,
 .sidebarListItem:hover {
   background-color: #e9ecef;
+  color: #0099ff;
+  margin: 0;
 }
 
 .sidebarIcon {
@@ -45,4 +47,11 @@
 .link {
   text-decoration: none;
   color: #555;
+}
+
+@media only screen and (max-width: 768px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  .sidebar {
+    position: static;
+  }
 }
