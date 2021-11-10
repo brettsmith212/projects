@@ -82,15 +82,14 @@ html {
 }
 
 body {
-    
-    font-family: 'Poppins', sans-serif;  
-    background: ${({ theme }) => theme.colors.body};
-    color: ${({ theme }) => theme.colors.fontColor};
-    line-height: 1.5;
+  font-family: 'Poppins', sans-serif;  
+  background: ${({ theme }) => theme.colors.body};
+  color: ${({ theme }) => theme.colors.fontColor};
+  line-height: 1.5;
 }
 
 input {
-    font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
 };
 `;
 
